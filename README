@@ -1,0 +1,15 @@
+Settings
+https://github.com/qistoph/Settings
+
+Chris van Marle - 2010-2011
+
+These are some settings files I use on different machines
+
+In your home directory execute:
+#TODO
+
+Then create links
+for FILE in `find .settings -type f`; do ln -bs $FILE; done
+
+-b creates backups of existing files
+These backups will be overwritten when run again, so you'll still have to be careful
