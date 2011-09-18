@@ -6,10 +6,10 @@ Chris van Marle - 2010-2011
 These are some settings files I use on different machines
 
 In your home directory execute:
-#TODO
+git clone git://github.com/qistoph/Settings.git .settings
 
 Then create links
-for FILE in `find .settings -type f`; do ln -bs $FILE; done
+.settings/mklinks.sh
 
--b creates backups of existing files
-These backups will be overwritten when run again, so you'll still have to be careful
+Existing files will be backed up to <org name>~
+These will be overwritting if mklinks is run for a second time!
