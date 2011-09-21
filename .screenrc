@@ -16,4 +16,4 @@ hardstatus alwayslastline
 hardstatus string " %-w%{= BW}%50>%n %t%{-}%+w%<"
 
 vbell off
-bell_msg "Bell in window %n"
+bell_msg 'Bell in window %n'
