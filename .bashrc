@@ -13,6 +13,7 @@ export HISTCONTROL=ignoredups
 export HISTSIZE=1000
 
 export EDITOR=vim
+export SHELL
 
 # enable color support of ls and also add handy aliases
 eval `dircolors -b`
