@@ -13,3 +13,4 @@ ln -bs .settings/.bashrc .bashrc
 ln -bs .settings/.screenrc .screenrc
 ln -bs .settings/.vimrc .vimrc
 ln -bs .settings/skel.sh skel.sh
+ln -bs .settings/skel.pl skel.pl
