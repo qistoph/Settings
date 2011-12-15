@@ -79,5 +79,5 @@ defwt() {
 }
 
 cls() {
-	echo "[;H[2J"
+	echo -n "[;H[2J"
 }
