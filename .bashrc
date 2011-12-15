@@ -8,6 +8,9 @@
 # If not running interactively, don't do anything
 [[ "$-" != *i* ]] && return
 
+# Prevent accidental closing of last shell with C-d (don't export the IGNOREEOF)
+[[ "$BASHOPTS" == *:login_shell:* ]] && IGNOREEOF=1 
+
 # don't put duplicate lines in the history. See bash(1) for more options
 export HISTCONTROL=ignoredups
 export HISTSIZE=1000
