@@ -12,4 +12,4 @@ Then create links
 .settings/mklinks.sh
 
 Existing files will be backed up to <org name>~
-These will be overwritting if mklinks is run for a second time!
+These will be overwritten if mklinks is run for a second time!

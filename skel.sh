@@ -9,4 +9,8 @@ set -o errexit
 # Print each command to stdout before executing it
 # set -o verbose
 
+function control_c() {
+	exit 1
+}
 
+trap control_c SIGINT
