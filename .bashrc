@@ -41,8 +41,11 @@ alias r='screen -r $1'
 
 alias hd='od -Ax -tx1z -v'
 
-# I want core dumps
-#ulimit -c unlimited
+# cygwin specific aliases
+if [ $OSTYPE == "cygwin" ]; then
+	# convert path to windows path
+	wcd() { cd $(cygpath -u "$1"); };
+fi
 
 nd() {
   mkdir "$1" && cd "$1"
