@@ -92,3 +92,8 @@ defwt() {
 cls() {
 	echo -n "[;H[2J"
 }
+
+# Git helpers
+# Perform passed git command on all git repositories found in supplied path
+# git-all <path> <git-command> [git-arguments ...]
+git-all() { find $1 -name '.git' | while read GIT; do WD=${GIT%/.git}; git --work-tree "$WD" --git-dir "$GIT" ${@:2} | awk "{print\"$WD:\"\$0}"; done; }
