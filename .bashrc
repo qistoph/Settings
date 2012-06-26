@@ -18,6 +18,11 @@ export HISTSIZE=1000
 export EDITOR=vim
 export SHELL
 
+# I want core dumps
+#ulimit -c unlimited
+
+shopt -s checkwinsize
+
 # enable color support of ls and also add handy aliases
 eval `dircolors -b`
 alias ls='ls --color=auto'
@@ -62,8 +67,6 @@ xterm*)
 *)
 	;;
 esac
-
-shopt -s checkwinsize
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc).
