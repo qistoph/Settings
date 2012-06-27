@@ -1,6 +1,4 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
 
 # This script is provided by Chris van Marle on GitHub
 # https://github.com/qistoph
@@ -15,12 +13,14 @@
 export HISTCONTROL=ignoredups
 export HISTSIZE=1000
 
+# preferred editor: vim
 export EDITOR=vim
 export SHELL
 
-# I want core dumps
+# if I want core dumps
 #ulimit -c unlimited
 
+# regurly check the window size
 shopt -s checkwinsize
 
 # enable color support of ls and also add handy aliases
@@ -35,10 +35,13 @@ alias ll='ls -l'
 alias la='ls -A'
 alias l.='ls -d .*'
 
+# show warnings when calling gcc
 alias gcc='gcc -Wall'
 
+# easy reconnect to screen with r
 alias r='screen -r $1'
 
+# simple hexdump
 alias hd='od -Ax -tx1z -v'
 
 # cygwin specific aliases
@@ -47,6 +50,7 @@ if [ $OSTYPE == "cygwin" ]; then
 	wcd() { cd $(cygpath -u "$1"); };
 fi
 
+# create and enter a new directory
 nd() {
   mkdir "$1" && cd "$1"
 }
@@ -76,18 +80,6 @@ esac
 #if [ -f /etc/bash_completion ]; then
 #  . /etc/bash_completion
 #fi
-
-wt() {
-	echo -n "]2;${@}"
-}
-
-it() {
-	echo -n "]0;${@}"
-}
-
-defwt() {
-	echo -n "]2;$(whoami) @ $(hostname)"
-}
 
 cls() {
 	echo -n "[;H[2J"
