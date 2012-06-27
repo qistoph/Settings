@@ -95,5 +95,15 @@ cls() {
 
 # Git helpers
 # Perform passed git command on all git repositories found in supplied path
-# git-all <path> <git-command> [git-arguments ...]
-git-all() { find $1 -name '.git' | while read GIT; do WD=${GIT%/.git}; git --work-tree "$WD" --git-dir "$GIT" ${@:2} | awk "{print\"$WD:\"\$0}"; done; }
+git-all() {
+	if [ ${#*} -lt 2 ]; then
+		echo "$FUNCNAME <path> <git-commmand> [git-arguments...]";
+		return;
+	fi
+	find $1 -name '.git' |\
+		while read GIT; do
+			WD=${GIT%/.git};
+			git --work-tree "$WD" --git-dir "$GIT" ${@:2} | \
+				awk "{print\"$WD:\"\$0}";
+		done;
+}
