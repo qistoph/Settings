@@ -44,6 +44,10 @@ alias r='screen -r $1'
 # simple hexdump
 alias hd='od -Ax -tx1z -v'
 
+# asn1parse shortcuts
+alias oad='openssl asn1parse -inform der -in'
+alias oap='openssl asn1parse -inform pem -in'
+
 # cygwin specific aliases
 if [ $OSTYPE == "cygwin" ]; then
 	# convert path to windows path
@@ -59,7 +63,7 @@ nd() {
 case "$TERM" in
 xterm*|screen)
 	# Set a prompt of: user@host and current_directory
-	PS1='\[\e]0;\w\a\]\n\[\e[32m\]\u@\h \[\e[33m\]\w\[\e[0m\]\n\$ '
+	PS1='\n\[\e[32m\]\u@\h \[\e[33m\]\w\[\e[0m\]\n\$ '
 	;;
 *)
 	PS1='\u@\h:\w\$ '
@@ -75,6 +79,12 @@ xterm*)
 	;;
 esac
 
+if [ -e /usr/share/terminfo/x/xterm+256color ]; then
+	export TERM='xterm-256color'
+else
+	export TERM='xterm-color'
+fi
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc).
 #if [ -f /etc/bash_completion ]; then
@@ -83,6 +93,16 @@ esac
 
 cls() {
 	echo -n "[;H[2J"
+}
+
+hexdiff() {
+	echo $1 $2;
+	mkfifo $1.$$.hex;
+	mkfifo $2.$$.hex;
+	hexdump -C $1 > $1.$$.hex &
+	hexdump -C $2 > $2.$$.hex &
+	diff $1.$$.hex $2.$$.hex;
+	rm -f $1.$$.hex $2.$$.hex;
 }
 
 # Git helpers

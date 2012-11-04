@@ -31,6 +31,11 @@ if &term =~ "xterm-debian" || &term =~ "xterm-xfree86"
   set t_Sb=[4%dm
 endif
 
+if &term =~ "xterm-256color"
+  set t_Co=256
+  colorscheme colorful256
+endif
+
 " Make p in Visual mode replace the selected text with the "" register.
 vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
 
@@ -99,13 +104,14 @@ set smartcase
 " Auto change tabs to spaces
 "set expandtab
 
+map <F4> :TlistToggle<cr>
+
 "Map Ctrl-Tab, C-shift-tab, Ctrl-T to NextTab, PrevTab, NewTab
-map <C-Tab> :tabn<CR>
-imap <C-Tab> <C-O>:tabn<CR>
+"map <C-Tab> :tabn<CR>
+"imap <C-Tab> <C-O>:tabn<CR>
 
-map <C-S-Tab> :tabp<CR>
-imap <C-S-Tab> <C-O>:tabp<CR>
+"map <C-S-Tab> :tabp<CR>
+"imap <C-S-Tab> <C-O>:tabp<CR>
 
-map <C-T> :tabnew<CR>
-imap <C-T> <C-O>:tabnew<CR>
-
+"map <C-T> :tabnew<CR>
+"imap <C-T> <C-O>:tabnew<CR>
