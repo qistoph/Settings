@@ -97,12 +97,7 @@ cls() {
 
 hexdiff() {
 	echo $1 $2;
-	mkfifo $1.$$.hex;
-	mkfifo $2.$$.hex;
-	hexdump -C $1 > $1.$$.hex &
-	hexdump -C $2 > $2.$$.hex &
-	diff $1.$$.hex $2.$$.hex;
-	rm -f $1.$$.hex $2.$$.hex;
+	diff <(hexdump -C $1) <(hexdump -C $2)
 }
 
 # Git helpers
