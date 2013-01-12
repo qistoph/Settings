@@ -1,5 +1,14 @@
 #!/bin/bash
 
+if [ $HOME != $PWD ]; then
+	echo "You are not running $0 in your home directory ($HOME)"
+	read -p "Are you sure to continue? " ANS
+
+	[ "$ANS" != "y" ] && [ "$ANS" != "yes" ] && exit
+
+	echo "Continuing"
+fi
+
 # Exit if undeclared variables are used
 set -o nounset
 
