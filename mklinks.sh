@@ -14,3 +14,8 @@ ln -bs .settings/.screenrc .screenrc
 ln -bs .settings/.vimrc .vimrc
 ln -bs .settings/skel.sh skel.sh
 ln -bs .settings/skel.pl skel.pl
+
+# OS specific links
+if [ $OSTYPE == "cygwin" ]; then
+	ln -bs .settings/start-keychain
+fi
