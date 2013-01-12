@@ -23,3 +23,8 @@ ln -bs .settings/.screenrc .screenrc
 ln -bs .settings/.vimrc .vimrc
 ln -bs .settings/skel.sh skel.sh
 ln -bs .settings/skel.pl skel.pl
+
+if [ ! -d .vim/colors ]; then
+	mkdir -p .vim/colors
+fi
+ln -bs $PWD/.settings/colorful256.vim .vim/colors/
