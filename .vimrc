@@ -61,6 +61,8 @@ if has("autocmd")
  autocmd FileType sh,make			let b:comment_leader = '# '
  noremap <silent> ,c :<C-B>sil <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:noh<CR>
  noremap <silent> ,u :<C-B>sil <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:noh<CR>
+
+ autocmd FileType perl				set foldmethod=syntax
 endif " has ("autocmd")
 
 " Some Debian-specific things
@@ -97,6 +99,9 @@ imap <C-down> <C-o><C-e>
 set tabstop=4
 set shiftwidth=4
 set smartcase
+
+let perl_fold = 1
+let perl_extended_vars = 1
 
 " Auto change spaces to tabs
 "set softtabstop=4
