@@ -31,6 +31,11 @@ if &term =~ "xterm-debian" || &term =~ "xterm-xfree86"
   set t_Sb=[4%dm
 endif
 
+if &term =~ "xterm-256color"
+  set t_Co=256
+  colorscheme colorful256
+endif
+
 " Make p in Visual mode replace the selected text with the "" register.
 vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
 
@@ -56,6 +61,8 @@ if has("autocmd")
  autocmd FileType sh,make			let b:comment_leader = '# '
  noremap <silent> ,c :<C-B>sil <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:noh<CR>
  noremap <silent> ,u :<C-B>sil <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:noh<CR>
+
+ autocmd FileType perl				set foldmethod=syntax
 endif " has ("autocmd")
 
 " Some Debian-specific things
@@ -93,19 +100,23 @@ set tabstop=4
 set shiftwidth=4
 set smartcase
 
+let perl_fold = 1
+let perl_extended_vars = 1
+
 " Auto change spaces to tabs
 "set softtabstop=4
 
 " Auto change tabs to spaces
 "set expandtab
 
+map <F4> :TlistToggle<cr>
+
 "Map Ctrl-Tab, C-shift-tab, Ctrl-T to NextTab, PrevTab, NewTab
-map <C-Tab> :tabn<CR>
-imap <C-Tab> <C-O>:tabn<CR>
+"map <C-Tab> :tabn<CR>
+"imap <C-Tab> <C-O>:tabn<CR>
 
-map <C-S-Tab> :tabp<CR>
-imap <C-S-Tab> <C-O>:tabp<CR>
+"map <C-S-Tab> :tabp<CR>
+"imap <C-S-Tab> <C-O>:tabp<CR>
 
-map <C-T> :tabnew<CR>
-imap <C-T> <C-O>:tabnew<CR>
-
+"map <C-T> :tabnew<CR>
+"imap <C-T> <C-O>:tabnew<CR>

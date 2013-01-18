@@ -1,0 +1,8 @@
+# Source this file to start keychain
+
+# First make sure charade is still in place,
+# as it might be overwritten by cygwin updates
+sha256sum.exe /usr/bin/ssh-agent | egrep '^0dcbc1bf5498f93376ef46a41161abad09293dca9c0baa17a0f85875a5203372' || echo -ne "/usr/bin/ssh-agent hash invalid\nreinstall charade:\n\$ cd ~/src/charade\n\$ make install"
+
+keychain -Q
+source ~/.keychain/`hostname`-sh

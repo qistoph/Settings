@@ -1,6 +1,4 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
 
 # This script is provided by Chris van Marle on GitHub
 # https://github.com/qistoph
@@ -15,8 +13,15 @@
 export HISTCONTROL=ignoredups
 export HISTSIZE=1000
 
+# preferred editor: vim
 export EDITOR=vim
 export SHELL
+
+# if I want core dumps
+#ulimit -c unlimited
+
+# regurly check the window size
+shopt -s checkwinsize
 
 # enable color support of ls and also add handy aliases
 eval `dircolors -b`
@@ -30,15 +35,26 @@ alias ll='ls -l'
 alias la='ls -A'
 alias l.='ls -d .*'
 
+# show warnings when calling gcc
 alias gcc='gcc -Wall'
 
+# easy reconnect to screen with r
 alias r='screen -r $1'
 
+# simple hexdump
 alias hd='od -Ax -tx1z -v'
 
-# I want core dumps
-#ulimit -c unlimited
+# asn1parse shortcuts
+alias oad='openssl asn1parse -inform der -in'
+alias oap='openssl asn1parse -inform pem -in'
 
+# cygwin specific aliases
+if [ $OSTYPE == "cygwin" ]; then
+	# convert path to windows path
+	wcd() { cd $(cygpath -u "$1"); };
+fi
+
+# create and enter a new directory
 nd() {
   mkdir "$1" && cd "$1"
 }
@@ -47,7 +63,7 @@ nd() {
 case "$TERM" in
 xterm*|screen)
 	# Set a prompt of: user@host and current_directory
-	PS1='\[\e]0;\w\a\]\n\[\e[32m\]\u@\h \[\e[33m\]\w\[\e[0m\]\n\$ '
+	PS1='\n\[\e[32m\]\u@\h \[\e[33m\]\w\[\e[0m\]\n\$ '
 	;;
 *)
 	PS1='\u@\h:\w\$ '
@@ -63,7 +79,11 @@ xterm*)
 	;;
 esac
 
-shopt -s checkwinsize
+if [[ -e /usr/share/terminfo/x/xterm+256color || -e /usr/share/terminfo/78/xterm+256color ]]; then
+	export TERM='xterm-256color'
+else
+	export TERM='xterm-color'
+fi
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc).
@@ -71,18 +91,26 @@ shopt -s checkwinsize
 #  . /etc/bash_completion
 #fi
 
-wt() {
-	echo -n "]2;${@}"
-}
-
-it() {
-	echo -n "]0;${@}"
-}
-
-defwt() {
-	echo -n "]2;$(whoami) @ $(hostname)"
-}
-
 cls() {
 	echo -n "[;H[2J"
+}
+
+hexdiff() {
+	echo $1 $2;
+	diff <(hexdump -C $1) <(hexdump -C $2)
+}
+
+# Git helpers
+# Perform passed git command on all git repositories found in supplied path
+git-all() {
+	if [ ${#*} -lt 2 ]; then
+		echo "$FUNCNAME <path> <git-commmand> [git-arguments...]";
+		return;
+	fi
+	find $1 -name '.git' |\
+		while read GIT; do
+			WD=${GIT%/.git};
+			git --work-tree "$WD" --git-dir "$GIT" ${@:2} | \
+				awk "{print\"$WD:\"\$0}";
+		done;
 }
