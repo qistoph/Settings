@@ -100,6 +100,15 @@ hexdiff() {
 	diff <(hexdump -C $1) <(hexdump -C $2)
 }
 
+hex2bin()
+{
+	perl -ne '$_=~s/[^0-9a-f]//ig; print pack("H*", $_)' $@
+}
+
+bin2hex() {
+	perl -ne 'print unpack("H*", $_)' $@
+}
+
 # Git helpers
 # Perform passed git command on all git repositories found in supplied path
 git-all() {
