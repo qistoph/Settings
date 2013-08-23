@@ -2,7 +2,25 @@
 
 # First make sure charade is still in place,
 # as it might be overwritten by cygwin updates
-sha256sum.exe /usr/bin/ssh-agent | egrep '^0dcbc1bf5498f93376ef46a41161abad09293dca9c0baa17a0f85875a5203372' || echo -ne "/usr/bin/ssh-agent hash invalid\nreinstall charade:\n\$ cd ~/src/charade\n\$ make install"
+
+unset hashes
+declare -A hashes
+hashes[triace]=603289f824a3a86fd900f8a80e8ab83f54c5fbfb337c587471698af1b195b688
+
+if [ ! ${hashes[$(hostname)]+abc} ]; then
+	echo -n "Hostname not found in expected hashes. Please update $0"
+	return
+fi
+
+echo ${hashes[$(hostname)]} expected hash
+
+sha256sum.exe /usr/bin/ssh-agent | egrep "^${hashes[$(hostname)]} \*/usr/bin/ssh-agent" 
+if [ ! $? -eq 0 ]; then
+	echo -ne "/usr/bin/ssh-agent hash invalid\nreinstall charade:\n\$ cd ~/src/charade\n\$ make install"
+	return
+fi
+
+unset hashes
 
 keychain -Q
 source ~/.keychain/`hostname`-sh
