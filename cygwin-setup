@@ -2,8 +2,8 @@ Packages:
 make
 
 Putty - Cygwin integration
-- download latest putty src: ftp://ftp.chiark.greenend.org.uk/users/sgtatham/putty-latest/putty-0.62.tar.gz
-- tar zvxf putty-0.62.tar.gz putty-*/contrib/cygtermd
+- download latest putty src: ftp://ftp.chiark.greenend.org.uk/users/sgtatham/putty-latest/putty-0.63.tar.gz
+- tar zvxf putty-0.63.tar.gz --wildcards putty-*/contrib/cygterm
 - cd putty-*/contrib/cygtermd
 - make
 - cp cygtermd.exe /bin
