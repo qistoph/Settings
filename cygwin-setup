@@ -3,7 +3,7 @@ make
 
 Putty - Cygwin integration
 - download latest putty src: ftp://ftp.chiark.greenend.org.uk/users/sgtatham/putty-latest/putty-0.63.tar.gz
-- tar zvxf putty-0.63.tar.gz --wildcards putty-*/contrib/cygterm
+- tar zvxf putty-0.63.tar.gz --wildcards putty-*/contrib/cygtermd
 - cd putty-*/contrib/cygtermd
 - make
 - cp cygtermd.exe /bin
