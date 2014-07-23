@@ -59,6 +59,8 @@ if has("autocmd")
  autocmd FileType vim				let b:comment_leader = '" '
  autocmd FileType c,cpp,java,php	let b:comment_leader = '// '
  autocmd FileType sh,make			let b:comment_leader = '# '
+ autocmd FileType php				map <C-B> :!php -l %<CR>
+ autocmd FileType php				map <F5> :!php -l %<CR>
  noremap <silent> ,c :<C-B>sil <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:noh<CR>
  noremap <silent> ,u :<C-B>sil <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:noh<CR>
 
