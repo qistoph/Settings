@@ -53,7 +53,7 @@ alias oap='openssl asn1parse -inform pem -in'
 # cygwin specific aliases
 if [ $OSTYPE == "cygwin" ]; then
 	# convert path to windows path
-	wcd() { cd "$(cygpath -u "$1")"; };
+	wcd() { cd "$(cygpath -u "$*")"; };
 fi
 
 # create and enter a new directory
