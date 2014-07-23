@@ -28,6 +28,7 @@ eval `dircolors -b`
 alias ls='ls --color=auto'
 alias dir='ls --color=auto --format=vertical'
 alias vdir='ls --color=auto --format=long'
+alias grep='grep --color=auto'
 
 # some more ls aliases
 alias l='ls -l'
@@ -51,7 +52,7 @@ alias oap='openssl asn1parse -inform pem -in'
 # cygwin specific aliases
 if [ $OSTYPE == "cygwin" ]; then
 	# convert path to windows path
-	wcd() { cd $(cygpath -u "$1"); };
+	wcd() { cd "$(cygpath -u "$1")"; };
 fi
 
 # create and enter a new directory
@@ -91,14 +92,15 @@ fi
 #  . /etc/bash_completion
 #fi
 
-cls() {
-	echo -n "[;H[2J"
-}
+cls() { echo -n "[;H[2J"; }
 
-hexdiff() {
-	echo $1 $2;
-	diff <(hexdump -C $1) <(hexdump -C $2)
-}
+hexdiff() { diff <(hexdump -C "$1") <(hexdump -C "$2"); }
+
+hex2bin() { perl -ne '$_=~s/[^0-9a-f]//ig; print pack("H*", $_)' "$@"; }
+
+bin2hex() { perl -ne 'print unpack("H*", $_)' "$@"; }
+
+grepl() { grep --color=always "$@" | less -r; }
 
 # Git helpers
 # Perform passed git command on all git repositories found in supplied path
@@ -107,7 +109,7 @@ git-all() {
 		echo "$FUNCNAME <path> <git-commmand> [git-arguments...]";
 		return;
 	fi
-	find $1 -name '.git' |\
+	find "$1" -name '.git' |\
 		while read GIT; do
 			WD=${GIT%/.git};
 			git --work-tree "$WD" --git-dir "$GIT" ${@:2} | \
