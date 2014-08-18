@@ -34,3 +34,7 @@ ln -bs $PWD/.settings/colorful256.vim .vim/colors/
 if [ $OSTYPE == "cygwin" ]; then
 	ln -bs .settings/start-keychain
 fi
+
+if [ $OSTYPE == "linux-gnu" ]; then
+	ln -bs .settings/fixssh
+fi
