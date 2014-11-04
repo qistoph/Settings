@@ -18,3 +18,5 @@ hardstatus string " %-w%{= BW}%50>%n %t%{-}%+w%<"
 
 vbell off
 bell_msg 'Bell in window %n'
+
+defscrollback 10000
