@@ -32,6 +32,15 @@ if [ ! -d .vim/colors ]; then
 fi
 ln -bs $PWD/${DIRNAME}/colorful256.vim .vim/colors/
 
+# Git config
+GIT_CONFIG=${DIRNAME}/gitconfig
+if git config --global -l | grep -q -F "include.path=${GIT_CONFIG}"; then
+	echo "$GIT_CONFIG already included in git config (global)"
+else
+	echo "Adding $GIT_CONFIG to git config (global)"
+	git config --global --add include.path "${GIT_CONFIG}"
+fi
+
 # OS specific links
 if [ $OSTYPE == "cygwin" ]; then
 	ln -bs ${DIRNAME}/start-keychain
