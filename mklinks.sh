@@ -9,6 +9,8 @@ if [ $HOME != $PWD ]; then
 	echo "Continuing"
 fi
 
+DIRNAME=$(dirname "$0")
+
 # Exit if undeclared variables are used
 set -o nounset
 
@@ -18,23 +20,23 @@ set -o errexit
 # Print each command to stdout before executing it
 set -o verbose
 
-ln -bs .settings/.bashrc .bashrc
-ln -bs .settings/.screenrc .screenrc
-ln -bs .settings/.vimrc .vimrc
-ln -bs .settings/skel.sh skel.sh
-ln -bs .settings/skel.pl skel.pl
+ln -bs ${DIRNAME}/.bashrc .bashrc
+ln -bs ${DIRNAME}/.screenrc .screenrc
+ln -bs ${DIRNAME}/.vimrc .vimrc
+ln -bs ${DIRNAME}/skel.sh skel.sh
+ln -bs ${DIRNAME}/skel.pl skel.pl
 
 # Vim colors
 if [ ! -d .vim/colors ]; then
 	mkdir -p .vim/colors
 fi
-ln -bs $PWD/.settings/colorful256.vim .vim/colors/
+ln -bs $PWD/${DIRNAME}/colorful256.vim .vim/colors/
 
 # OS specific links
 if [ $OSTYPE == "cygwin" ]; then
-	ln -bs .settings/start-keychain
+	ln -bs ${DIRNAME}/start-keychain
 fi
 
 if [ $OSTYPE == "linux-gnu" ]; then
-	ln -bs .settings/fixssh
+	ln -bs ${DIRNAME}/fixssh
 fi
