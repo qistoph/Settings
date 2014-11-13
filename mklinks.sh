@@ -32,6 +32,12 @@ if [ ! -d .vim/colors ]; then
 fi
 ln -bs $PWD/${DIRNAME}/colorful256.vim .vim/colors/
 
+# Vim pathogen
+if [ ! -d .vim/autoload ]; then
+	mkdir -p .vim/autoload
+fi
+ln -bs $PWD/${DIRNAME}/vim-pathogen/autoload/pathogen.vim .vim/autoload
+
 # Git config
 GIT_CONFIG=${DIRNAME}/gitconfig
 if git config --global -l | grep -q -F "include.path=${GIT_CONFIG}"; then

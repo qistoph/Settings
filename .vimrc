@@ -143,3 +143,5 @@ function! s:RunShellCommand(cmdline)
   setlocal nomodifiable
   1
 endfunction
+
+execute pathogen#infect()
