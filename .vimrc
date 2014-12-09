@@ -19,6 +19,7 @@ set scrolloff=5		" we want to see beyond the cursor when scrolling
 set pastetoggle=<F2>
 set wildmenu
 set background=dark
+set isfname-== " I don't want = in filenames when completing for example file=/var/log/sys<C-x><C-f>
 
 " Suffixes that get lower priority when doing tab completion for filenames.
 " These are files we are not likely to want to edit or read.
