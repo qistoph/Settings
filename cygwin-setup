@@ -1,5 +1,5 @@
 Packages:
-make
+make, gcc-core
 
 Putty - Cygwin integration
 - download latest putty src: ftp://ftp.chiark.greenend.org.uk/users/sgtatham/putty-latest/putty-0.63.tar.gz
@@ -11,6 +11,7 @@ Putty - Cygwin integration
 - Session panel: connection: telnet, something in hostname
 - Proxy panel: tick consider proxying local host connections, proxy type: local
 - proxy cmd: c:\cygwin\bin\cygtermd.exe /home/simon /bin/bash -login
+- Data panel: terminal-type string: xterm-256color
 
 Vim
 - download colorful256.vim (http://www.vim.org/scripts/script.php?script_id=2034) to ~/.vim/colors (wget 'http://www.vim.org/scripts/download_script.php?src_id=7746' -O ~/.vim/colors/colorful256.vim)
