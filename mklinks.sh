@@ -26,6 +26,7 @@ ln -bs ${DIRNAME}/.vimrc .vimrc
 ln -bs ${DIRNAME}/skel.sh skel.sh
 ln -bs ${DIRNAME}/skel.pl skel.pl
 ln -bs ${DIRNAME}/skel-recursive-dir.pl skel-recursive-dir.pl
+ln -bs ${DIRNAME}/skel-xpath.pl skel-xpath.pl
 
 # Vim colors
 if [ ! -d .vim/colors ]; then
