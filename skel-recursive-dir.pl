@@ -4,8 +4,18 @@ use strict;
 use warnings;
 use Data::Dumper;
 
-my $basedir = $ARGV[0] || '.';
-handle_dir($basedir);
+my $basename = $ARGV[0] || '.';
+handle($basename);
+
+sub handle {
+	my $path = shift;
+
+	if(-d "$path") {
+		handle_dir($path);
+	} elsif(-f "$path") {
+		handle_file($path);
+	}
+}
 
 sub handle_dir {
 	my $dir = shift;
@@ -19,11 +29,7 @@ sub handle_dir {
 		my $path = "$dir/$file";
 		#print "path: $path\n";
 
-		if(-d "$path") {
-			handle_dir($path);
-		} elsif(-f "$path") {
-			handle_file($path);
-		}
+		handle($path);
 	}
 }
 
