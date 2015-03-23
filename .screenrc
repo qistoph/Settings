@@ -8,6 +8,7 @@ bindkey -k F1 prev
 bindkey -k F2 next
 
 bind R screen -t "root: " su -
+bind / eval "scrollback 0" "scrollback 10000"
 
 startup_message off
 
