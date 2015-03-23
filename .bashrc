@@ -9,8 +9,9 @@
 # Prevent accidental closing of last shell with C-d (don't export the IGNOREEOF)
 [[ "$BASHOPTS" == *:login_shell:* ]] && IGNOREEOF=1 
 
-# don't put duplicate lines in the history. See bash(1) for more options
-export HISTCONTROL="ignoredups ignorespace"
+# don't put duplicate lines in the history
+# don't put lines starting with space in the history
+export HISTCONTROL="ignoreboth"
 export HISTSIZE=1000
 
 # preferred editor: vim
