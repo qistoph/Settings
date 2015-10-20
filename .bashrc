@@ -41,7 +41,7 @@ alias l.='ls -d .*'
 alias gcc='gcc -Wall'
 
 # easy reconnect to screen with r
-alias r='~/.settings/grabssh; screen -r $1'
+alias r='~/.settings/grabssh; screen -U -r $1'
 
 # simple hexdump
 alias hd='od -Ax -tx1z -v'
