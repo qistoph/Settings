@@ -117,3 +117,13 @@ git-all() {
 				awk "{print\"$WD:\"\$0}";
 		done;
 }
+
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ]; do # while symlink
+	DIR="$(cd -P "$(dirname "$SOURCE")" && pwd)"
+	SOURCE="$(readlink "$SOURCE")"
+	[[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if SOURCE was rel.symlink, we need relative to path
+done
+DIR="$(cd -P "$(dirname "$SOURCE")" && pwd)"
+
+[ -e "$DIR/.bashrc.local" ] && source "$DIR/.bashrc.local"
