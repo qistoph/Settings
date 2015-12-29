@@ -124,11 +124,11 @@ map <F4> :TlistToggle<cr>
 "map <C-T> :tabnew<CR>
 "imap <C-T> <C-O>:tabnew<CR>
 
-if has('persistent_undo')
-	set undofile
-	set undolevels=1000
-	set undoreload=10000
-endif
+"if has('persistent_undo')
+	"set undofile
+	"set undolevels=1000
+	"set undoreload=10000
+"endif
 
 command! -complete=shellcmd -nargs=+ Shell call s:RunShellCommand(<q-args>)
 command! -complete=file -nargs=* Git call s:RunShellCommand('git '.<q-args>)
