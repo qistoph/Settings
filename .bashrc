@@ -103,6 +103,13 @@ bin2hex() { perl -ne 'print unpack("H*", $_)' "$@"; }
 
 grepl() { grep --color=always "$@" | less -r; }
 
+kpcli() {
+	/usr/local/bin/kpcli $*;
+	clear;
+	echo "Scrollback cleared";
+	screen -X eval 'scrollback 0' -X eval 'scrollback 10000';
+}
+
 # Git helpers
 # Perform passed git command on all git repositories found in supplied path
 git-all() {
