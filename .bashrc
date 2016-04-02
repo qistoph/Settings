@@ -104,10 +104,15 @@ bin2hex() { perl -ne 'print unpack("H*", $_)' "$@"; }
 grepl() { grep --color=always "$@" | less -r; }
 
 kpcli() {
-	/usr/local/bin/kpcli $*;
+	# Start kpcli
+	/usr/local/bin/kpcli --histfile /dev/null $*;
+	# Clear onsceen scrollback
 	clear;
-	echo "Scrollback cleared";
+	# Clear VTERM scrollback
+	reset;
+	# Clear screen scrollback (size: 0, size: 10000)
 	screen -X eval 'scrollback 0' -X eval 'scrollback 10000';
+	echo "Scrollback cleared";
 }
 
 # Git helpers
