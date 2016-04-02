@@ -47,7 +47,7 @@ let g:colors_name = "colorful256"
  highlight Title        cterm=none    ctermfg=199 ctermbg=16  gui=none    guifg=#ff00af guibg=#000000
  highlight WarningMsg   cterm=none    ctermfg=9   ctermbg=16  gui=none    guifg=#ff0000 guibg=#000000
  highlight DiffDelete   cterm=none    ctermfg=207 ctermbg=16  gui=none    guifg=#ff5fff guibg=#000000
- highlight Search       cterm=none    ctermfg=15  ctermbg=160 gui=none    guifg=#ffffff guibg=#df0000
+ highlight Search       cterm=none    ctermfg=16  ctermbg=184 gui=none    guifg=#000000 guibg=#dfdf00
  highlight Visual       cterm=none    ctermfg=16  ctermbg=50  gui=none    guifg=#000000 guibg=#00ffdf
  highlight Cursor       cterm=none    ctermfg=16  ctermbg=33  gui=none    guifg=#000000 guibg=#0087ff
  highlight StatusLine   cterm=reverse ctermfg=58  ctermbg=15  gui=reverse guifg=#5f5f00 guibg=#ffffff
