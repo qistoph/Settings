@@ -14,7 +14,7 @@ startup_message off
 
 # Window list at the bottom.
 hardstatus alwayslastline
-hardstatus string " %-w%{= BW}%50>%n %t%{-}%+w%<"
+hardstatus string "%{= KW}%H%{-} %-w%{= BW}%50>%n %t%{-}%+w%<"
 
 vbell off
 bell_msg 'Bell in window %n'
