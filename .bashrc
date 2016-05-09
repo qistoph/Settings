@@ -63,6 +63,12 @@ nd() {
   mkdir "$1" && cd "$1"
 }
 
+if [[ -e /usr/share/terminfo/x/xterm+256color || -e /usr/share/terminfo/78/xterm+256color || -e /usr/share/terminfo/78/xterm-256color ]]; then
+	export TERM='xterm-256color'
+else
+	export TERM='xterm-color'
+fi
+
 # set a fancy prompt
 case "$TERM" in
 xterm*|screen)
@@ -82,12 +88,6 @@ xterm*)
 *)
 	;;
 esac
-
-if [[ -e /usr/share/terminfo/x/xterm+256color || -e /usr/share/terminfo/78/xterm+256color || -e /usr/share/terminfo/78/xterm-256color ]]; then
-	export TERM='xterm-256color'
-else
-	export TERM='xterm-color'
-fi
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc).
