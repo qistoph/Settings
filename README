@@ -1,14 +1,14 @@
 Settings
 https://github.com/qistoph/Settings
 
-Chris van Marle - 2010-2013
+Chris van Marle - 2010-2016
 
 These are some settings files I use on different machines
 
 In your home directory execute:
 git clone git://github.com/qistoph/Settings.git .settings
 
-Then create links
+Then create links:
 .settings/mklinks.sh
 
 Existing files will be backed up to <org name>~
