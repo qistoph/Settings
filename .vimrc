@@ -52,7 +52,7 @@ if has("autocmd")
  " Enabled file type detection
  " Use the default filetype settings. If you also want to load indent files
  " to automatically do language-dependent indenting add 'indent' as well.
- filetype plugin on
+ filetype plugin indent on
 
  autocmd bufwritepost .vimrc source $MYVIMRC
 
