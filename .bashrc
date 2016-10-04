@@ -58,6 +58,17 @@ if [ $OSTYPE == "cygwin" ]; then
 	wcd() { cd "$(cygpath -u "$*")"; };
 fi
 
+# Ubuntu on Windows 10 specific aliases
+if [ -e '/mnt/c/Windows' ]; then
+	wcd() {
+		if [[ "$1" =~ ^([a-zA-Z]):\\(.*) ]]; then
+			drive=$(echo "${BASH_REMATCH[1]}" | tr '[:upper:]' '[:lower:]')
+			path=$(echo "${BASH_REMATCH[2]}" | tr '\\' '/')
+			cd "/mnt/$drive/$path"
+		fi
+	};
+fi
+
 # create and enter a new directory
 nd() {
   mkdir "$1" && cd "$1"
