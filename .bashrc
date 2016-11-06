@@ -52,6 +52,10 @@ alias hd='od -Ax -tx1z -v'
 alias oad='openssl asn1parse -inform der -in'
 alias oap='openssl asn1parse -inform pem -in'
 
+# server management aliases
+alias agu='sudo apt-get upgrade'
+alias ckr='sudo checkrestart'
+
 # cygwin specific aliases
 if [ $OSTYPE == "cygwin" ]; then
 	# convert path to windows path
