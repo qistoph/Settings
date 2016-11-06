@@ -1,4 +1,5 @@
 termcapinfo xterm* ti@:te@:is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l
+utf8 on
 
 # Bind F9 to lock
 bindkey -k k9 lockscreen
