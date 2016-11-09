@@ -112,7 +112,7 @@ esac
 
 cls() { echo -n "[;H[2J"; }
 
-hexdiff() { diff <(hexdump -C "$1") <(hexdump -C "$2"); }
+hexdiff() { vimdiff <(hexdump -vC "$1") <(hexdump -vC "$2"); }
 
 hex2bin() { perl -ne '$_=~s/[^0-9a-f]//ig; print pack("H*", $_)' "$@"; }
 
