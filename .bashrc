@@ -73,6 +73,11 @@ if [ -e '/mnt/c/Windows' ]; then
 	};
 fi
 
+# cd and ls directory
+cdl() {
+  cd "$1" && ls
+}
+
 # create and enter a new directory
 nd() {
   mkdir "$1" && cd "$1"
