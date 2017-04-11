@@ -130,6 +130,10 @@ map <F4> :TlistToggle<cr>
 	"set undoreload=10000
 "endif
 
+"system wide copy/paste
+vmap <leader>y :w! /tmp/vitmp.$USER<CR>:silent exec "!chmod 600 /tmp/vitmp.$USER"<CR>
+nmap <leader>p :r! cat /tmp/vitmp.$USER<CR>
+
 command! -complete=shellcmd -nargs=+ Shell call s:RunShellCommand(<q-args>)
 command! -complete=file -nargs=* Git call s:RunShellCommand('git '.<q-args>)
 function! s:RunShellCommand(cmdline)
