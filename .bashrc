@@ -56,6 +56,9 @@ alias oap='openssl asn1parse -inform pem -in'
 alias agu='sudo apt-get upgrade'
 alias ckr='sudo checkrestart'
 
+# remote IP address alias
+alias myip='curl ipecho.net/plain'
+
 # cygwin specific aliases
 if [ $OSTYPE == "cygwin" ]; then
 	# convert path to windows path
