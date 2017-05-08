@@ -128,6 +128,20 @@ bin2hex() { perl -ne 'print unpack("H*", $_)' "$@"; }
 
 grepl() { grep --color=always "$@" | less -r; }
 
+# CD into the (lexicographic) last directory matching the predicate
+# e.g.
+# /dir $ ls
+# ...
+# Backup-20170101
+# Backup-20170201
+# Backup-20170301
+# ...
+# /dir $ cdz Backup-
+# /dir/Backup-20170301 $
+cdz() {
+	cd $(find "$1"* -maxdepth 0 -type d | sort -r | head -1)
+}
+
 kpcli() {
 	# Start kpcli
 	/usr/local/bin/kpcli --histfile /dev/null $*;
