@@ -118,6 +118,19 @@ xterm*)
 	;;
 esac
 
+if [ -z "$SSH_AUTH_SOCK" ]; then
+	# SSH_AUTH_SOCK is not yet set (e.g. by forwarding)
+
+	GPG_SSH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+	GPG_SSH_SOCK_ALT="$HOME/.gnupg/S.gpg-agent.ssh"
+
+	if [ -n "$GPG_SSH_SOCK" ] && [ -S "$GPG_SSH_SOCK" ]; then
+		export SSH_AUTH_SOCK="$GPG_SSH_SOCK"
+	elif [ -S "$GPG_SSH_SOCK_ALT" ]; then
+		export SSH_AUTH_SOCK="$GPG_SSH_SOCK_ALT"
+	fi
+fi
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc).
 #if [ -f /etc/bash_completion ]; then
