@@ -121,7 +121,7 @@ esac
 if [ -z "$SSH_AUTH_SOCK" ]; then
 	# SSH_AUTH_SOCK is not yet set (e.g. by forwarding)
 
-	GPG_SSH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+	GPG_SSH_SOCK=$(gpgconf --list-dirs agent-ssh-socket 2>/dev/null)
 	GPG_SSH_SOCK_ALT="$HOME/.gnupg/S.gpg-agent.ssh"
 
 	if [ -n "$GPG_SSH_SOCK" ] && [ -S "$GPG_SSH_SOCK" ]; then
