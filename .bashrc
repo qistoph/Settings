@@ -7,7 +7,7 @@
 [[ "$-" != *i* ]] && return
 
 # Prevent accidental closing of last shell with C-d (don't export the IGNOREEOF)
-[[ "$BASHOPTS" == *:login_shell:* ]] && IGNOREEOF=1 
+[[ "$BASHOPTS" == *:login_shell:* ]] && IGNOREEOF=1
 
 # don't put duplicate lines in the history
 # don't put lines starting with space in the history
@@ -146,6 +146,18 @@ hex2bin() { perl -ne '$_=~s/[^0-9a-f]//ig; print pack("H*", $_)' "$@"; }
 bin2hex() { perl -ne 'print unpack("H*", $_)' "$@"; }
 
 grepl() { grep --color=always "$@" | less -r; }
+
+jqdiff() {
+	if [ $# -lt 3 ]; then
+		echo "Usage: jqdiff <jq options> <file1> <file2>"
+	else
+		N=$[ $# - 2 ]
+		FILE1="${*:(-2):1}"
+		FILE2="${*:(-1):1}"
+		ARGS=${*:1:$N}
+		vimdiff <(jq $ARGS "$FILE1") <(jq $ARGS "$FILE2")
+	fi
+}
 
 # CD into the (lexicographic) last directory matching the predicate
 # e.g.
