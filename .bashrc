@@ -124,10 +124,10 @@ if [ -z "$SSH_AUTH_SOCK" ]; then
 	GPG_SSH_SOCK=$(gpgconf --list-dirs agent-ssh-socket 2>/dev/null)
 	GPG_SSH_SOCK_ALT="$HOME/.gnupg/S.gpg-agent.ssh"
 
-	if [ -n "$GPG_SSH_SOCK" ] && [ -S "$GPG_SSH_SOCK" ]; then
-		export SSH_AUTH_SOCK="$GPG_SSH_SOCK"
-	elif [ -S "$GPG_SSH_SOCK_ALT" ]; then
+	if [ -S "$GPG_SSH_SOCK_ALT" ]; then
 		export SSH_AUTH_SOCK="$GPG_SSH_SOCK_ALT"
+	elif [ -n "$GPG_SSH_SOCK" ] && [ -S "$GPG_SSH_SOCK" ]; then
+		export SSH_AUTH_SOCK="$GPG_SSH_SOCK"
 	fi
 fi
 
