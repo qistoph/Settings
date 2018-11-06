@@ -22,6 +22,7 @@ set -o verbose
 
 ln -bs ${DIRNAME}/.bashrc .bashrc
 ln -bs ${DIRNAME}/.screenrc .screenrc
+ln -bs ${DIRNAME}/.tmux.conf .tmux.conf
 ln -bs ${DIRNAME}/.vimrc .vimrc
 ln -bs ${DIRNAME}/skel.sh skel.sh
 ln -bs ${DIRNAME}/skel.pl skel.pl
