@@ -24,6 +24,7 @@ ln -bs ${DIRNAME}/.bashrc .bashrc
 ln -bs ${DIRNAME}/.screenrc .screenrc
 ln -bs ${DIRNAME}/.tmux.conf .tmux.conf
 ln -bs ${DIRNAME}/.vimrc .vimrc
+ln -bs ${DIRNAME}/.jq .jq
 ln -bs ${DIRNAME}/skel.sh skel.sh
 ln -bs ${DIRNAME}/skel.pl skel.pl
 ln -bs ${DIRNAME}/skel-recursive-dir.pl skel-recursive-dir.pl
