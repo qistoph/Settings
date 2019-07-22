@@ -1,7 +1,7 @@
 def pathexpr:
 	map(
 		if type == "number" then
-			"["+(.|tostring)+"]"
+			"[\(tostring)]"
 		else
 			"."+.
 		end
