@@ -41,9 +41,13 @@ alias l.='ls -d .*'
 alias gcc='gcc -Wall'
 
 # easy reconnect to screen with r
-alias r='~/.settings/grabssh; screen -U -r $1'
-alias rd='~/.settings/grabssh; screen -U -d -r $1'
-alias rD='~/.settings/grabssh; screen -U -D -r $1'
+if [ -e /usr/bin/scren ]; then
+	alias r='~/.settings/grabssh; screen -U -r $1'
+	alias rd='~/.settings/grabssh; screen -U -d -r $1'
+	alias rD='~/.settings/grabssh; screen -U -D -r $1'
+elif [ -e /usr/bin/tmux ]; then
+	alias r='~/.settings/grabssh; tmux a $1'
+fi
 
 # simple hexdump
 alias hd='od -Ax -tx1z -v'
