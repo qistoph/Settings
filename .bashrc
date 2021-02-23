@@ -205,7 +205,7 @@ git-all() {
 }
 
 git-url() {
-	echo "https://www.bleq.nl/gitlist/"$(git remote -v | grep push | grep '@abu' | sed 's/.*:repos\/\(\w\+\).*/\1/')"/commit/"$(git log -1 --format=format:'%H')
+	echo $(git remote -v | sed -En '/github/s/.*:(\S+)(\.git) \(push\).*/https:\/\/github.com\/\1\/commit\//p; /abu/s/.*:repos\/(\S+) \(push\)/https:\/\/bleq.nl\/gitlist\/\1\/commit\//p')$(git log -1 --format=format:'%H')
 }
 
 SOURCE="${BASH_SOURCE[0]}"
