@@ -41,7 +41,7 @@ alias l.='ls -d .*'
 alias gcc='gcc -Wall'
 
 # easy reconnect to screen with r
-if [ -e /usr/bin/scren ]; then
+if [ -e /usr/bin/screen ]; then
 	alias r='~/.settings/grabssh; screen -U -r $1'
 	alias rd='~/.settings/grabssh; screen -U -d -r $1'
 	alias rD='~/.settings/grabssh; screen -U -D -r $1'
@@ -58,7 +58,7 @@ alias oap='openssl asn1parse -inform pem -in'
 
 # server management aliases
 alias agu='sudo apt-get upgrade'
-alias ckr='sudo checkrestart'
+alias ckr='sudo checkrestart -b /etc/checkrestart_blacklist'
 
 # remote IP address alias
 alias myip='curl ipecho.net/plain'
@@ -113,9 +113,9 @@ xterm*|screen)
 	;;
 esac
 
-# If this is an xterm set the title to user@host:dir
 case $TERM in
 xterm*)
+	# If this is an xterm set the title to user@host:dir
 	PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
 	;;
 *)
