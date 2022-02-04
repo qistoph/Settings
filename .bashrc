@@ -102,10 +102,10 @@ xterm*|screen)
 	HAS_GIT_PS1=$(declare -F __git_ps1)
 	if [ -n "$HAS_GIT_PS1" ]; then
 		# Set a prompt of: user@host and current_directory (git branch)
-		PS1='\n\[\e[32m\]\u@\h \[\e[33m\]\w \[\e[31m\]$(__git_ps1 "(%s)")\[\e[0m\]\n\$ '
+		PS1='\ek$USER@$HOSTNAME\e\\\n\[\e[32m\]\u@\h \[\e[33m\]\w \[\e[31m\]$(__git_ps1 "(%s)")\[\e[0m\]\n\$ '
 	else
 		# Set a prompt of: user@host and current_directory
-		PS1='\n\[\e[32m\]\u@\h \[\e[33m\]\w\[\e[0m\]\n\$ '
+		PS1='\ek$USER@$HOSTNAME\e\\\n\[\e[32m\]\u@\h \[\e[33m\]\w\[\e[0m\]\n\$ '
 	fi
 	;;
 *)
