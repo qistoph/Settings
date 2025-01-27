@@ -12,7 +12,7 @@
 # don't put duplicate lines in the history
 # don't put lines starting with space in the history
 export HISTCONTROL="ignoreboth"
-export HISTSIZE=1000
+export HISTSIZE=-1
 
 # preferred editor: vim
 export EDITOR=vim
