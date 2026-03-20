@@ -10,3 +10,4 @@
 	lg3 = log --stat --pretty=short --graph
 	lg = !"git lg1"
 	ls = ls-files
+	diffs = diff --staged
