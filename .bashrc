@@ -90,6 +90,17 @@ nd() {
   mkdir "$1" && cd "$1"
 }
 
+# list and cat file(s), especially useful with wildcards, e.g.
+# lscat /etc/cron.d/*
+lscat ()
+{
+    for FILE in "$@";
+    do
+        echo "$(tput bold)$FILE:$(tput sgr0)";
+        cat "$FILE";
+    done
+}
+
 if [[ -e /usr/share/terminfo/x/xterm+256color || -e /usr/share/terminfo/78/xterm+256color || -e /usr/share/terminfo/78/xterm-256color ]]; then
 	export TERM='xterm-256color'
 else
